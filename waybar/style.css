@@ -1,0 +1,173 @@
+/* OS X Snow Leopard Theme (Top Bar Only) */
+
+* {
+    /* Matched to your installed fonts */
+    font-family: "Lucida Grande Regular", "SF Pro Display", "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 16px; /* Increased base size to fill height */
+    font-weight: 500;
+}
+
+/* -----------------------------------------------------------------------------
+   TOP BAR (Global Menu)
+----------------------------------------------------------------------------- */
+window#waybar {
+    /* The classic Silver Gradient */
+    background: linear-gradient(to bottom, #dedede 0%, #cfcfcf 50%, #b0b0b0 100%);
+    border-bottom: 1px solid #777777;
+    color: #222222;
+    padding-right: 10px;
+}
+
+/* Apple Logo */
+#custom-apple {
+    font-size: 23px; 
+    /* Reduced vertical padding to make the logo fill more of the bar */
+    padding: 0px 12px; 
+    color: #333333;
+    margin-right: 2px;
+    margin-left: 10px; 
+    
+    /* Center vertically by forcing min-height */
+    min-height: 24px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+    text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
+    transition: all 0.2s ease;
+}
+
+/* -----------------------------------------------------------------------------
+   SKEUOMORPHIC WORKSPACES (DESKTOPS)
+----------------------------------------------------------------------------- */
+#workspaces {
+    background: transparent;
+    margin: 0px 5px;
+}
+
+#workspaces button {
+    padding: 0px 6px; 
+    margin: 3px 2px; 
+    border-radius: 4px;
+    color: #444444;
+    font-weight: bold;
+    font-size: 14px; 
+    
+    /* Inactive Button */
+    background: linear-gradient(to bottom, #f0f0f0 0%, #dcdcdc 100%);
+    border: 1px solid #999999;
+    box-shadow: 0px 1px 0px rgba(255,255,255,0.6);
+    text-shadow: 0px 1px 0px rgba(255,255,255,0.8);
+    min-height: 0; 
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
+}
+
+#workspaces button.active {
+    color: #ffffff;
+    background: linear-gradient(to bottom, #555555 0%, #333333 100%);
+    border: 1px solid #222222;
+    box-shadow: inset 0px 2px 3px rgba(0,0,0,0.4);
+    text-shadow: 0px -1px 0px rgba(0,0,0,0.5);
+}
+
+/* Window Title (Active App Name) */
+#window {
+    background: transparent;
+    color: #333333;
+    font-weight: 500; /* Less bold on the left */
+    font-size: 15px;  
+    padding: 0 10px;
+    min-height: 24px; /* Force full height */
+    text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
+}
+
+/* Right Side Modules */
+#clock, 
+#custom-search, 
+#tray, 
+#network, 
+#bluetooth, 
+#battery, 
+#pulseaudio, 
+#custom-weather,
+#mpris,
+#custom-prev,
+#custom-play_pause,
+#custom-next {
+    color: #333333;
+    
+    /* Minimal vertical padding to let font take up space */
+    padding: 0px 10px; 
+    min-height: 24px; /* Force full height to vertically center text */
+    
+    text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
+    
+    /* Changed to 600 (Semi-Bold) for "a tiny bit more bold" on the right */
+    font-weight: 600;
+    
+    /* Increased size to fill height */
+    font-size: 16px; 
+
+    border: 1px solid transparent;
+    border-radius: 4px;    
+    transition: all 0.2s ease;
+}
+
+/* Hover Effects */
+#custom-apple:hover,
+#custom-search:hover,
+#bluetooth:hover,
+#network:hover,
+#pulseaudio:hover,
+#battery:hover,
+#custom-weather:hover,
+#clock:hover,
+#mpris:hover,
+#custom-prev:hover,
+#custom-play_pause:hover,
+#custom-next:hover {
+    color: #ffffff;
+    background: linear-gradient(to bottom, #555555 0%, #333333 100%);
+    border: 1px solid #222222;
+    box-shadow: inset 0px 2px 3px rgba(0,0,0,0.4);
+    text-shadow: 0px -1px 0px rgba(0,0,0,0.5);
+}
+
+#custom-prev, #custom-play_pause, #custom-next {
+    padding: 0 6px;
+    font-size: 16px; /* Matched to other modules */
+}
+
+#bluetooth {
+    /* Kept slightly bolder for icon clarity */
+    font-weight: 700; 
+    font-size: 18px; /* Slightly larger icon */
+    text-shadow: 0px 0px 1px rgba(51, 51, 51, 0.5), 0px 1px 0px rgba(255,255,255,0.5);
+}
+
+#custom-search {
+    font-size: 16px;
+    padding-right: 20px;
+}
+
+#battery.charging, #battery.plugged {
+    color: #2ecc71; 
+}
+
+#battery.critical:not(.charging) {
+    color: #e74c3c; 
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        color: #000000;
+    }
+}

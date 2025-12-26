@@ -1,0 +1,129 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 26,
+    "modules-left": [
+        "custom/apple",
+        "hyprland/window"
+    ],
+    "modules-center": [],
+    "modules-right": [
+        "hyprland/workspaces",
+        "mpris",          
+        "custom/prev",
+        "custom/play_pause",
+        "custom/next",
+        "custom/weather",
+        "bluetooth",
+        "network",
+        "pulseaudio",
+        "battery",
+        "clock",
+        "custom/search"
+    ],
+
+    "custom/apple": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "$HOME/.config/waybar/scripts/waybar_menu.sh"
+    },
+    
+    "hyprland/window": {
+        "format": "<b>{}</b>",
+        "max-length": 30,
+        "separate-outputs": true
+    },
+
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate"
+    },
+
+    "custom/prev": {
+        "format": "",
+        "on-click": "playerctl previous",
+        "tooltip": false
+    },
+
+    "custom/play_pause": {
+        "format": "",
+        "on-click": "playerctl play-pause",
+        "tooltip": false
+    },
+
+    "custom/next": {
+        "format": "",
+        "on-click": "playerctl next",
+        "tooltip": false
+    },
+
+    // Song Title Information
+    "mpris": {
+        "format": "<i>{title} - {artist}</i>",
+        "format-paused": "<i>{title} - {artist}</i>",
+        "max-length": 40,
+        "interval": 1,
+        "tooltip": true
+    },
+
+    "custom/search": {
+        "format": "",
+        "on-click": "wofi --show drun",
+        "tooltip": false
+    },
+
+    "custom/weather": {
+        "format": "{}",
+        "interval": 1800,
+        "exec": "curl -s 'wttr.in/?format=%c+%t'",
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "{icon}   {volume}%",
+        "format-muted": "   Muted",
+        "on-click": "pavucontrol",
+        "format-icons": {
+            "headphone": "",
+            "default": ["", "", ""]
+        }
+    },
+
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": "", 
+        "format-off": "",
+        "format-on": "",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueman-manager"
+    },
+
+    "network": {
+        "format-wifi": "   {essid}",
+        "format-ethernet": "󰈀   Wired",
+        "format-disconnected": "⚠   Disconnected",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "clock": {
+        "format": "{:%a %b %e   %H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    }
+}

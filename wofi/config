@@ -1,0 +1,15 @@
+# Core settings for Spotlight feel
+mode=drun
+show=drun
+width=600
+height=400
+location=center
+no_actions=true
+allow_images=true
+image_size=24
+prompt=Spotlight 
+
+# Fix flickering/bugs
+# Disables the internal fade which often conflicts with Hyprland
+no_fade=true 
+filter_rate=100

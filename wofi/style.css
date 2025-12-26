@@ -1,0 +1,93 @@
+/* OS X Snow Leopard Theme for Wofi (Matches Waybar) */
+
+* {
+    /* Match Waybar fonts */
+    font-family: "SF Pro Display", "Lucida Grande", "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#window {
+    /* Match Waybar's Silver Gradient - slightly whiter */
+    background-image: linear-gradient(to bottom, #eeeeee 0%, #dcdcdc 50%, #b0b0b0 100%);
+    
+    /* Match Waybar's Border */
+    border: 1px solid #777777;
+    
+    /* Rounder corners */
+    border-radius: 8px;
+    
+    /* Drop shadow for depth */
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.4);
+    
+    color: #222222;
+    margin: 0px;
+    
+    /* Disable animation on the window itself to prevent flicker */
+    transition: none;
+}
+
+#input {
+    /* White search box inset */
+    margin: 5px;
+    border-radius: 3px; 
+    border: 1px solid #888888;
+    background-color: #ffffff;
+    color: #333333;
+    padding: 6px 12px;
+    
+    /* Inner shadow for depth */
+    box-shadow: inset 0px 1px 2px rgba(0,0,0,0.2);
+}
+
+#input:focus {
+    /* Blue focus ring */
+    border-color: #6d8ec2;
+    box-shadow: 0px 0px 0px 2px rgba(109, 142, 194, 0.4);
+}
+
+#outer-box {
+    margin: 0px;
+    border: none;
+    background-color: transparent;
+}
+
+#scroll {
+    margin: 0px;
+    border: none;
+}
+
+#text {
+    margin: 2px 5px;
+    color: #333333;
+    /* White text shadow for "etched" look on silver */
+    text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
+}
+
+#entry {
+    border: none;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 6px 10px;
+    background-color: transparent;
+}
+
+/* Classic OS X Blue Selection Gradient */
+#entry:selected {
+    background: linear-gradient(to bottom, #5b92e5 0%, #2f69bf 100%);
+    color: #ffffff;
+    
+    /* Dark text shadow for contrast on blue */
+    text-shadow: 0px -1px 0px rgba(0,0,0,0.2);
+    font-weight: 600;
+}
+
+#text:selected {
+    color: #ffffff;
+    text-shadow: 0px -1px 0px rgba(0,0,0,0.2);
+}
+
+#img {
+    margin-right: 12px;
+    background: transparent;
+}
