@@ -30,7 +30,7 @@
     
     "hyprland/window": {
         "format": "<b>{}</b>",
-        "max-length": 30,
+        "max-length": 75,
         "separate-outputs": true
     },
 
@@ -80,6 +80,7 @@
     },
 
     "pulseaudio": {
+        // Pango markup used here to force font ONLY on the icon
         "format": "<span font_family='JetBrainsMono Nerd Font'>{icon}</span>  {volume}%",
         "format-muted": "<span font_family='JetBrainsMono Nerd Font'></span>  Muted",
         "on-click": "pavucontrol",
