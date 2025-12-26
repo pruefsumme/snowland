@@ -80,8 +80,8 @@
     },
 
     "pulseaudio": {
-        "format": "{icon}  {volume}%",
-        "format-muted": "  Muted",
+        "format": "<span font_family='JetBrainsMono Nerd Font'>{icon}</span>  {volume}%",
+        "format-muted": "<span font_family='JetBrainsMono Nerd Font'></span>  Muted",
         "on-click": "pavucontrol",
         "format-icons": {
             "headphone": "",

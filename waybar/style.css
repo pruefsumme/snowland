@@ -2,7 +2,7 @@
 
 * {
     /* Matched to your installed fonts */
-    font-family: "Lucida Grande", "SF Pro Display", "JetBrainsMono Nerd Font", sans-serif;
+    font-family: "Lucida Grande", "SF Pro Display", "JetBrainsMono Nerd Font", "Font Awesome 7 Free", "Font Awesome 7 Brands", sans-serif;
     font-size: 16px; /* Increased base size to fill height */
     font-weight: 500;
 }
@@ -147,7 +147,8 @@ window#waybar {
     text-shadow: 0px 0px 1px rgba(51, 51, 51, 0.5), 0px 1px 0px rgba(255,255,255,0.5);
 }
 
-#custom-search {
+#custom-search {	
+    font-family: "Font Awesome 7 Free", "JetBrainsMono Nerd Font";
     font-size: 16px;
     padding-right: 20px;
 }
@@ -169,4 +170,12 @@ window#waybar {
     to {
         color: #000000;
     }
+}
+
+
+#custom-prev,
+#custom-play_pause,
+#custom-next {
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 7 Free", sans-serif;
+    font-size: 16px;
 }
