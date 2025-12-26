@@ -551,6 +551,7 @@ main() {
   echo
   success "You're good to go, log out and Snowland should be installed!"
   info "Remember to open lxappearance (or another theme selector) to apply the Snowland GTK and icon themes."
+  info "Also, adjust your hyprland and hyprpaper config to your display. Use hyprctl monitors to get the correct names and values"
 }
 
 main "$@"
