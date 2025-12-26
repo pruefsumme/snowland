@@ -11,5 +11,5 @@ prompt=Spotlight
 
 # Fix flickering/bugs
 # Disables the internal fade which often conflicts with Hyprland
-no_fade=true 
-filter_rate=100
+# no_fade=true 
+# filter_rate=100
