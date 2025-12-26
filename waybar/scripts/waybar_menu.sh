@@ -32,32 +32,35 @@ fi
 # Ensure Screenshots directory exists
 mkdir -p $HOME/Pictures/Screenshots
 
-# Define the menu options
-entries="  Screenshot Region\n  Screenshot Full\n  Run Command\n  Audio Settings\n  Bluetooth\n  Power Menu"
+# Define the menu options with Pango markup to force the correct font
+# We use a span to force JetBrainsMono Nerd Font (or FontAwesome) on the icons
+entries="<span font_family='JetBrainsMono Nerd Font'></span>   Screenshot Region\n<span font_family='JetBrainsMono Nerd Font'></span>   Screenshot Full\n<span font_family='JetBrainsMono Nerd Font'></span>   Run Command\n<span font_family='JetBrainsMono Nerd Font'></span>   Audio Settings\n<span font_family='JetBrainsMono Nerd Font'></span>   Bluetooth\n<span font_family='JetBrainsMono Nerd Font'></span>   Power Menu"
 
 # Launch wofi
-# --x 5: Slight left offset to align with corner
-# --y 30: Below the bar
-selected=$(echo -e "$entries" | wofi --dmenu --cache-file /dev/null --prompt "Menu" --width 250 --height 320 --location top --x 5 --y 30 "${STYLE_ARGS[@]}")
+# --allow-markup: Vital for the font spans to work
+# --dmenu: Run in dmenu mode
+selected=$(echo -e "$entries" | wofi --dmenu --allow-markup --cache-file /dev/null --prompt "Menu" --width 250 --height 320 --location top --x 5 --y 30 "${STYLE_ARGS[@]}")
 
+# Match against the text content, ignoring the icon and markup
+# We use * wildcards to ignore the messy markup parts at the start
 case $selected in
-  "    Screenshot Region")
+  *"  Screenshot Region")
     sleep 0.2
     file="$HOME/Pictures/Screenshots/Screenshot_$(date +%Y-%m-%d_%H-%M-%S).png"
     grim -g "$(slurp)" - | tee "$file" | wl-copy && notify-send "Screenshot" "Region saved to $file and clipboard"
     ;;
-  "    Screenshot Full")
+  *"  Screenshot Full")
     sleep 0.2
     file="$HOME/Pictures/Screenshots/Screenshot_$(date +%Y-%m-%d_%H-%M-%S).png"
     grim - | tee "$file" | wl-copy && notify-send "Screenshot" "Fullscreen saved to $file and clipboard"
     ;;
-  "    Run Command")
+  *"  Run Command")
     wofi --show drun
     ;;
-  "    Audio Settings")
+  *"  Audio Settings")
     pavucontrol
     ;;
-  "    Bluetooth")
+  *"  Bluetooth")
     if command -v blueman-manager &> /dev/null; then
         blueman-manager
     elif command -v blueberry &> /dev/null; then
@@ -66,7 +69,7 @@ case $selected in
         notify-send "Error" "No bluetooth manager found. Install 'blueman'."
     fi
     ;;
-  "  Power Menu")
+  *"  Power Menu")
     wlogout
     ;;
 esac
