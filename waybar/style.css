@@ -160,7 +160,14 @@ window#waybar {
     color: #2ecc71; 
 }
 
+
+#battery.warning:not(.charging) {
+    background-color: transparent;
+    color: #966a18; 
+}
+
 #battery.critical:not(.charging) {
+    background-color: transparent;
     color: #e74c3c; 
     animation-name: blink;
     animation-duration: 0.5s;
@@ -175,9 +182,6 @@ window#waybar {
     }
 }
 
-/* FORCE ICONS FOR MEDIA BUTTONS ONLY 
-   (Removed pulseaudio so the config.jsonc Pango markup can handle the mix of fonts)
-*/
 #custom-prev,
 #custom-play_pause,
 #custom-next {
