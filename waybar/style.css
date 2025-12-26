@@ -2,7 +2,7 @@
 
 * {
     /* Matched to your installed fonts */
-    font-family: "Lucida Grande Regular", "SF Pro Display", "JetBrainsMono Nerd Font", sans-serif;
+    font-family: "Lucida Grande", "SF Pro Display", "JetBrainsMono Nerd Font", sans-serif;
     font-size: 16px; /* Increased base size to fill height */
     font-weight: 500;
 }
