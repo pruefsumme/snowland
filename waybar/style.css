@@ -21,7 +21,6 @@ window#waybar {
 /* Apple Logo */
 #custom-apple {
     font-size: 23px; 
-    /* Reduced vertical padding to make the logo fill more of the bar */
     padding: 0px 12px; 
     color: #333333;
     margin-right: 2px;
@@ -77,10 +76,10 @@ window#waybar {
 #window {
     background: transparent;
     color: #333333;
-    font-weight: 500; /* Less bold on the left */
+    font-weight: 500;
     font-size: 15px;  
     padding: 0 10px;
-    min-height: 24px; /* Force full height */
+    min-height: 24px; 
     text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
 }
 
@@ -101,7 +100,7 @@ window#waybar {
     
     /* Minimal vertical padding to let font take up space */
     padding: 0px 10px; 
-    min-height: 24px; /* Force full height to vertically center text */
+    min-height: 24px; 
     
     text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
     
@@ -138,13 +137,13 @@ window#waybar {
 
 #custom-prev, #custom-play_pause, #custom-next {
     padding: 0 6px;
-    font-size: 16px; /* Matched to other modules */
+    font-size: 16px; 
 }
 
 #bluetooth {
     /* Kept slightly bolder for icon clarity */
     font-weight: 700; 
-    font-size: 18px; /* Slightly larger icon */
+    font-size: 18px; 
     text-shadow: 0px 0px 1px rgba(51, 51, 51, 0.5), 0px 1px 0px rgba(255,255,255,0.5);
 }
 

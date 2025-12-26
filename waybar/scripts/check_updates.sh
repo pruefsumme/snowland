@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# LEFTOVERS FROM OTHER THEME I MADE - CAN BE IGNORED HERE
 # Check for updates (pacman + aur)
 # Dependencies: pacman-contrib
 

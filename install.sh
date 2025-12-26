@@ -25,26 +25,43 @@ error()   { printf "%b[ERR]%b  %s\n"   "$RED"    "$RESET" "$*" >&2; }
 ask()     { printf "%b[?]%b    %s"      "$MAGENTA" "$RESET" "$*"; }
 
 check_dependencies() {
+  # Standard repo packages
   local required=(
-    git unzip fc-cache
+    git unzip fc-cache curl
     kitty nemo wofi waybar hyprpaper
     grim slurp wl-copy wpctl playerctl
-    checkupdates wlogout notify-send pavucontrol
-    nm-connection-editor
+    notify-send pavucontrol nm-connection-editor
+    ttf-font-awesome ttf-jetbrains-mono-nerd 
   )
+  
+  # Packages that might be AUR or named differently
+  local aur_packages=(
+    "wlogout (AUR)"
+  )
+
   local alt_groups=(
-    "curl|wget"
     "bluetooth_manager:blueman-manager|blueberry"
   )
   local missing=()
-  local downloader=""
 
+  # Check standard commands
   for cmd in "${required[@]}"; do
+    # Skip checking font packages directly via command - check fc-list later or assume package manager handles it
+    if [[ "$cmd" == "ttf-"* ]]; then
+        continue 
+    fi
+    
     if ! command -v "$cmd" >/dev/null 2>&1; then
       missing+=("$cmd")
     fi
   done
 
+  # Check wlogout specifically
+  if ! command -v wlogout >/dev/null 2>&1; then
+      missing+=("wlogout (Available in AUR)")
+  fi
+
+  # Check alt groups
   for group in "${alt_groups[@]}"; do
     local label="$group"
     local tools_str="$group"
@@ -58,9 +75,6 @@ check_dependencies() {
     for tool in "${tools[@]}"; do
       if command -v "$tool" >/dev/null 2>&1; then
         satisfied="yes"
-        if [[ "$tools_str" == "curl|wget" ]]; then
-          downloader="$tool"
-        fi
         break
       fi
     done
@@ -80,11 +94,11 @@ check_dependencies() {
     for dep in "${missing[@]}"; do
       error "  - $dep"
     done
-    error "Install the missing packages with your package manager and rerun the installer."
+    warn "Note: 'wlogout' is an AUR package on Arch Linux (yay -S wlogout)."
+    warn "Fonts required: ttf-font-awesome, ttf-jetbrains-mono-nerd"
+    error "Install the missing packages with your package manager (pacman/yay) and rerun the installer."
     exit 1
   fi
-
-  DOWNLOADER="$downloader"
 }
 
 #########################
@@ -215,15 +229,6 @@ choose_theme_target_dir() {
   printf '%s\n' "$user_dir"
 }
 
-_download() {
-  local url="$1" output="$2"
-  if [[ "$DOWNLOADER" == "curl" ]]; then
-    curl -L -o "$output" "$url"
-  else
-    wget -O "$output" "$url"
-  fi
-}
-
 install_gtk_theme() {
   info "Installing OS-X Leopard GTK theme..."
   local target_dir
@@ -241,7 +246,7 @@ install_gtk_theme() {
 
   local zipfile="$tmpdir/osx-leopard-theme.zip"
   info "Downloading GTK theme archive..."
-  _download "https://github.com/B00merang-Project/OS-X-Leopard/archive/refs/tags/1.2.zip" "$zipfile"
+  curl -L -o "$zipfile" "https://github.com/B00merang-Project/OS-X-Leopard/archive/refs/tags/1.2.zip"
 
   info "Extracting GTK theme..."
   unzip -q "$zipfile" -d "$tmpdir"
@@ -284,7 +289,7 @@ install_icon_theme() {
 
   local zipfile="$tmpdir/mac-osx-lion-icons.zip"
   info "Downloading icon theme archive..."
-  _download "https://github.com/B00merang-Artwork/Mac-OS-X-Lion/archive/master.zip" "$zipfile"
+  curl -L -o "$zipfile" "https://github.com/B00merang-Artwork/Mac-OS-X-Lion/archive/master.zip"
 
   info "Extracting icon theme..."
   unzip -q "$zipfile" -d "$tmpdir"
@@ -376,7 +381,7 @@ install_wallpaper() {
 
   local zipfile="$tmpdir/aurora.zip"
   info "Downloading wallpaper archive..."
-  _download "https://blog.greggant.com/media/2021-09-25-nature/aurora.zip" "$zipfile"
+  curl -L -o "$zipfile" "https://blog.greggant.com/media/2021-09-25-nature/aurora.zip"
 
   info "Extracting wallpaper..."
   unzip -q "$zipfile" -d "$tmpdir"

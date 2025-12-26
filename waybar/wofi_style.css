@@ -1,4 +1,5 @@
-/* Dark Transparent Menu Theme (Matches Screenshot) */
+/* OLD UNUSED ASSET FROM OTHER THEME I MADE */
+
 
 * {
     font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", monospace;
@@ -21,9 +22,7 @@
     
     color: #ffffff;
     margin: 0px;
-    
-    /* Fix flicker */
-    transition: none;
+
 }
 
 #input {
@@ -37,8 +36,7 @@
 }
 
 #input:focus {
-    border-color: #d79921; /* Gruvbox/Orange accent */
-    box-shadow: none;
+    border-color: #d79921;
 }
 
 #outer-box {
@@ -67,8 +65,8 @@
 
 /* Orange/Brown Selection Highlight */
 #entry:selected {
-    background-color: #d79921; /* Orange accent */
-    color: #1d2021; /* Dark text on selection for contrast */
+    background-color: #d79921; 
+    color: #1d2021; 
     font-weight: bold;
 }
 
