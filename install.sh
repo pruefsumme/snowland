@@ -409,6 +409,19 @@ main() {
   echo
   printf "%bSnowland setup script%b\n" "$BOLD$CYAN" "$RESET"
   echo "---------------------------------------------"
+  echo
+  printf "%b DISCLAIMER%b\n" "$BOLD$YELLOW" "$RESET"
+  echo "Use this installer at your own risk. This script will:"
+  echo "  - Move and replace configuration files in ~/.config/"
+  echo "  - Download and install themes and fonts"
+  echo "  - Modify your system configuration"
+  echo
+  echo "All existing configurations will be backed up to:"
+  printf "  %b~/snowland_backups/%b\n" "$BOLD" "$RESET"
+  echo "before any changes are made. You can restore them if needed."
+  echo
+  echo "---------------------------------------------"
+  echo
 
   echo "This script will:"
   echo "  - Backup your existing hypr, kitty, waybar, and wofi configs from ~/.config"
