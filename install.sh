@@ -24,11 +24,67 @@ warn()    { printf "%b[WARN]%b %s\n"  "$YELLOW" "$RESET" "$*"; }
 error()   { printf "%b[ERR]%b  %s\n"   "$RED"    "$RESET" "$*" >&2; }
 ask()     { printf "%b[?]%b    %s"      "$MAGENTA" "$RESET" "$*"; }
 
-require_cmd() {
-  if ! command -v "$1" >/dev/null 2>&1; then
-    error "Required command '$1' is not installed. Please install it and rerun."
+check_dependencies() {
+  local required=(
+    git unzip fc-cache
+    kitty nemo wofi waybar hyprpaper
+    grim slurp wl-copy wpctl playerctl
+    checkupdates wlogout notify-send pavucontrol
+    nm-connection-editor
+  )
+  local alt_groups=(
+    "curl|wget"
+    "bluetooth_manager:blueman-manager|blueberry"
+  )
+  local missing=()
+  local downloader=""
+
+  for cmd in "${required[@]}"; do
+    if ! command -v "$cmd" >/dev/null 2>&1; then
+      missing+=("$cmd")
+    fi
+  done
+
+  for group in "${alt_groups[@]}"; do
+    local label="$group"
+    local tools_str="$group"
+    if [[ "$group" == *:* ]]; then
+      label="${group%%:*}"
+      tools_str="${group#*:}"
+    fi
+
+    IFS='|' read -r -a tools <<<"$tools_str"
+    local satisfied="no"
+    for tool in "${tools[@]}"; do
+      if command -v "$tool" >/dev/null 2>&1; then
+        satisfied="yes"
+        if [[ "$tools_str" == "curl|wget" ]]; then
+          downloader="$tool"
+        fi
+        break
+      fi
+    done
+
+    if [[ "$satisfied" == "no" ]]; then
+      local pretty="${tools_str//|/ or }"
+      if [[ "$label" != "$tools_str" ]]; then
+        missing+=("$label ($pretty)")
+      else
+        missing+=("$pretty")
+      fi
+    fi
+  done
+
+  if ((${#missing[@]} > 0)); then
+    error "Missing required dependencies:"
+    for dep in "${missing[@]}"; do
+      error "  - $dep"
+    done
+    error "Install the missing packages with your package manager and rerun the installer."
     exit 1
   fi
+
+  DOWNLOADER="$downloader"
 }
 
 #########################
@@ -36,17 +92,7 @@ require_cmd() {
 #########################
 
 info "Checking required tools..."
-require_cmd git
-if command -v curl >/dev/null 2>&1; then
-  DOWNLOADER="curl"
-elif command -v wget >/dev/null 2>&1; then
-  DOWNLOADER="wget"
-else
-  error "Neither curl nor wget is installed. Please install one and rerun."
-  exit 1
-fi
-require_cmd unzip
-require_cmd fc-cache
+check_dependencies
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 INSTALL_STATE_FILE="${INSTALL_STATE_FILE:-$HOME/.config/snowland/.installed}"
@@ -60,7 +106,8 @@ trap 'error "Script failed at line $LINENO"' ERR
 backup_and_install_configs() {
   info "Backing up existing configs and installing new ones..."
 
-  local backup_root="$HOME/.config_backup_snowland_$(date +%Y%m%d_%H%M%S)"
+  local backup_dir="$HOME/snowland_backups"
+  local backup_root="$backup_dir/config_$(date +%Y%m%d_%H%M%S)"
   mkdir -p "$backup_root"
 
   local items=("hypr" "kitty" "waybar" "wofi")
@@ -503,6 +550,7 @@ main() {
 
   echo
   success "You're good to go, log out and Snowland should be installed!"
+  info "Remember to open lxappearance (or another theme selector) to apply the Snowland GTK and icon themes."
 }
 
 main "$@"
