@@ -41,7 +41,7 @@ mkdir -p $HOME/Pictures/Screenshots
 entries="<span font_family='JetBrainsMono Nerd Font'></span>   Screenshot Region\n<span font_family='JetBrainsMono Nerd Font'></span>   Screenshot Full\n<span font_family='JetBrainsMono Nerd Font'></span>   Run Command\n<span font_family='JetBrainsMono Nerd Font'></span>   Audio Settings\n<span font_family='JetBrainsMono Nerd Font'></span>   Bluetooth\n<span font_family='JetBrainsMono Nerd Font'></span>   Power Menu"
 
 # Launch wofi
-selected=$(echo -e "$entries" | wofi --dmenu --hide-search --allow-markup --cache-file /dev/null --prompt "Menu" --width 220 --height 280 --location top_left --x 15 --y 0 --no-fade "${STYLE_ARGS[@]}")
+selected=$(echo -e "$entries" | wofi --dmenu --hide-search --allow-markup --cache-file /dev/null  --width 220 --height 160 --location top_left --x 15 --y 0 --no-fade "${STYLE_ARGS[@]}")
 
 # Match against the text content, ignoring the icon and markup
 # We use * wildcards to ignore the messy markup parts at the start
