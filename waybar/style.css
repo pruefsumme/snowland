@@ -78,8 +78,8 @@ window#waybar {
 /* Window Title (Active App Name) */
 #window {
     background: transparent;
-    color: #333333;
-    font-weight: 500;
+    color: #131313;
+    font-weight: 900;
     font-size: 15px;  
     padding: 0 10px;
     min-height: 24px; 

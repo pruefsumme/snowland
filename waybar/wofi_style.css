@@ -1,48 +1,32 @@
-/* OLD UNUSED ASSET FROM OTHER THEME I MADE */
-
+/* wofi_style.css - OS X Snow Leopard Menu Dropdown Replica */
 
 * {
-    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", monospace;
-    font-size: 14px;
+    /* Classic OS X Fonts */
+    font-family: "Lucida Grande", "SF Pro Text", "Helvetica Neue", sans-serif;
+    font-size: 13px;
     font-weight: 500;
+    color: black;
 }
 
 #window {
-    /* Dark, semi-transparent background */
-    background-color: rgba(20, 20, 20, 0.95);
+    background-color: rgba(255, 255, 255, 0.98);
     
-    /* Slightly rounded corners */
-    border-radius: 8px;
+    border: 1px solid #bfbfbf;
     
-    /* Subtle dark border */
-    border: 1px solid #333333;
+    border-radius: 0px 0px 5px 5px;
     
-    /* Remove shadow for cleaner look or keep minimal */
-    box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.3);
     
-    color: #ffffff;
     margin: 0px;
-
 }
 
 #input {
-    /* Input field styling */
-    margin: 10px;
-    border-radius: 4px; 
-    border: 1px solid #444444;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    padding: 8px 12px;
-}
-
-#input:focus {
-    border-color: #d79921;
+    display: none;
 }
 
 #outer-box {
     margin: 0px;
-    border: none;
-    background-color: transparent;
+    padding: 5px 0px; 
 }
 
 #scroll {
@@ -51,30 +35,31 @@
 }
 
 #text {
-    margin: 2px 5px;
-    color: #cccccc;
+    margin: 0px;
+    padding: 0px;
+
+    color: #000000; 
 }
 
 #entry {
+    padding: 4px 20px; 
+    margin: 0px;
     border: none;
-    border-radius: 4px;
-    margin: 2px 5px;
-    padding: 8px 10px;
     background-color: transparent;
 }
 
-/* Orange/Brown Selection Highlight */
+
 #entry:selected {
-    background-color: #d79921; 
-    color: #1d2021; 
-    font-weight: bold;
+    background-image: linear-gradient(to bottom, #5f9cfd 0%, #1c5ead 100%);
+    outline: none;
 }
 
 #text:selected {
-    color: #1d2021;
+    color: #ffffff; 
+    text-shadow: 0px 1px 0px rgba(0,0,0,0.2);
 }
 
 #img {
-    margin-right: 12px;
+    margin-right: 10px;
     background: transparent;
 }
