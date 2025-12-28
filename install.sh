@@ -31,7 +31,7 @@ check_dependencies() {
     kitty nemo wofi waybar hyprpaper
     grim slurp wl-copy wpctl playerctl
     notify-send pavucontrol nm-connection-editor
-    ttf-font-awesome ttf-jetbrains-mono-nerd 
+    ttf-font-awesome ttf-jetbrains-mono-nerd dunst
   )
   
   # Packages that might be AUR or named differently
@@ -124,7 +124,7 @@ backup_and_install_configs() {
   local backup_root="$backup_dir/config_$(date +%Y%m%d_%H%M%S)"
   mkdir -p "$backup_root"
 
-  local items=("hypr" "kitty" "waybar" "wofi")
+  local items=("hypr" "kitty" "waybar" "wofi" "dunst" "fastfetch")
 
   for item in "${items[@]}"; do
     local src="$SCRIPT_DIR/$item"
@@ -429,7 +429,7 @@ main() {
   echo
 
   echo "This script will:"
-  echo "  - Backup your existing hypr, kitty, waybar, and wofi configs from ~/.config"
+  echo "  - Backup your existing hypr, kitty, waybar, wofi, dunst configs from ~/.config"
   echo "  - Copy the versions from this folder into ~/.config"
   echo "  - Optionally install SF Mono + Lucida fonts (user-wide)"
   echo "  - Optionally install the OS-X Leopard GTK theme (user-wide)"
@@ -500,7 +500,7 @@ main() {
     # Subsequent runs: ask what to reinstall
     echo
     echo "Configuration step:"
-    echo "  - hypr, kitty, waybar, and wofi configs in ~/.config"
+    echo "  - hypr, kitty, waybar, wofi, dunst, and fastfetch configs in ~/.config"
     ask "Reinstall these configs? [y/N]: "
     read -r ans || true
     if [[ "$ans" =~ ^[Yy]$ ]]; then

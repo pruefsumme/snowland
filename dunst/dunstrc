@@ -1,0 +1,45 @@
+[global]
+    font = Lucida Grande 12
+    background = "#f0f0f0ee"
+    foreground = "#222222"
+    
+    frame_width = 1
+    frame_color = "#999999"
+    corner_radius = 10
+
+    height = (60, 300)
+    width = 320
+    
+    origin = top-right
+
+    padding = 16
+    horizontal_padding = 16
+    
+    text_icon_padding = 16
+
+    progress_bar = true
+    progress_bar_height = 6
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    icon_position = left
+    min_icon_size = 32
+    max_icon_size = 64
+    
+    vertical_alignment = center
+
+[urgency_low]
+    background = "#f0f0f0ee"
+    foreground = "#444444"
+    timeout = 4
+
+[urgency_normal]
+    background = "#f0f0f0ee"
+    foreground = "#222222"
+    timeout = 6
+
+[urgency_critical]
+    background = "#ffddddff"
+    foreground = "#990000"
+    frame_color = "#ff3b30"
+    timeout = 0
