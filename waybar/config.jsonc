@@ -81,7 +81,7 @@
 
     "pulseaudio": {
         // Pango markup used here to force font ONLY on the icon
-        "format": "<span font_family='JetBrainsMono Nerd Font'>{icon}</span>  {volume}%",
+        "format": "<span font_family='JetBrainsMono Nerd Font'>{icon}</span>   {volume}%",
         "format-muted": "<span font_family='JetBrainsMono Nerd Font'></span>  Muted",
         "on-click": "pavucontrol",
         "format-icons": {
@@ -91,12 +91,12 @@
     },
 
     "bluetooth": {
-        "format": "  {status}",
+        "format": "   {status}",
         "format-disabled": "", 
         "format-off": "",
         "format-on": "",
-        "format-connected": "  {device_alias}",
-        "format-connected-battery": "  {device_alias} {device_battery_percentage}%",
+        "format-connected": "   {device_alias}",
+        "format-connected-battery": "   {device_alias} {device_battery_percentage}%",
         "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
@@ -117,9 +117,9 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}  {capacity}%",
-        "format-charging": "  {capacity}%",
-        "format-plugged": "  {capacity}%",
+        "format": "{icon}   {capacity}%",
+        "format-charging": "   {capacity}%",
+        "format-plugged": "   {capacity}%",
         "format-icons": ["", "", "", "", ""]
     },
 

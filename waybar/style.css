@@ -103,6 +103,7 @@ window#waybar {
     
     /* Minimal vertical padding to let font take up space */
     padding: 0px 10px; 
+    margin: 0px 2px;
     min-height: 24px; 
     
     text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
@@ -157,17 +158,10 @@ window#waybar {
 }
 
 #battery.charging, #battery.plugged {
-    color: #023f1b; 
-}
-
-
-#battery.warning:not(.charging) {
-    background-color: transparent;
-    color: #966a18; 
+    color: #2ecc71; 
 }
 
 #battery.critical:not(.charging) {
-    background-color: transparent;
     color: #e74c3c; 
     animation-name: blink;
     animation-duration: 0.5s;
@@ -182,6 +176,9 @@ window#waybar {
     }
 }
 
+/* FORCE ICONS FOR MEDIA BUTTONS ONLY 
+   (Removed pulseaudio so the config.jsonc Pango markup can handle the mix of fonts)
+*/
 #custom-prev,
 #custom-play_pause,
 #custom-next {
