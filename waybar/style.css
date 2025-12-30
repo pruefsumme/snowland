@@ -101,19 +101,13 @@ window#waybar {
 #custom-next {
     color: #333333;
     
-    /* Minimal vertical padding to let font take up space */
     padding: 0px 10px; 
     margin: 0px 2px;
     min-height: 24px; 
     
     text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
-    
-    /* Changed to 600 (Semi-Bold) for "a tiny bit more bold" on the right */
-    font-weight: 600;
-    
-    /* Increased size to fill height */
+    font-weight: 500;
     font-size: 16px; 
-
     border: 1px solid transparent;
     border-radius: 4px;    
     transition: all 0.2s ease;
