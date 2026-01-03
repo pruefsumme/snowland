@@ -31,7 +31,7 @@ check_dependencies() {
     kitty nemo wofi waybar hyprpaper
     grim slurp wl-copy wpctl playerctl
     notify-send pavucontrol nm-connection-editor
-    ttf-font-awesome ttf-jetbrains-mono-nerd dunst
+    ttf-font-awesome ttf-jetbrains-mono-nerd dunst 
   )
   
   # Packages that might be AUR or named differently
@@ -41,6 +41,7 @@ check_dependencies() {
 
   local alt_groups=(
     "bluetooth_manager:blueman-manager|blueberry"
+    "swayosd:swayosd-server"
   )
   local missing=()
 
